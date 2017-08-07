@@ -1,0 +1,27 @@
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+
+	
+		<h:form>
+			<p:panelMenu style="width:225px">
+				<p:submenu label="CADASTROS BÁSICOS">
+					<p:menuitem value="Cadastrar Aluno" icon="icon-users" outcome="frm_aluno.xhtml" />
+					<p:menuitem value="Cadastrar Usuário do Sistema" icon="icon-user" />
+				</p:submenu>
+				
+				<p:submenu label="Relatorios">
+					<p:menuitem value="Relatorio Aluno" icon="icon-users" outcome="rel_aluno.xhtml"/>
+				</p:submenu>
+				
+				<p:submenu label="Outras informações">
+					<p:menuitem value="Aniversariante(s) do mês" icon="icon-users" />
+				</p:submenu>
+				
+				
+			</p:panelMenu>	
+		</h:form>
+
+</ui:composition>

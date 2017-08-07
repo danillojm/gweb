@@ -1,0 +1,283 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+
+	<ui:define name="corpo">
+		<p:growl id="growl" showDetail="true" life="5000" showSummary="false"
+			severity="info, warn, error" autoUpdate="true" />
+
+
+		<h:form id="formAluno" binding="#{alunoForm.formPrincipal}"
+			enctype="multipart/form-data">
+
+			<div class="EmptyBox10" />
+			<p:panel id="pnToolbar"
+				styleClass="Container100 ShadowEffect DispInlBlock ui-panelgrid-blank ui-noborder">
+				<p:focus context="pnToolbar" />
+				<p:toolbar styleClass="ui-noborder">
+					<f:facet name="left">
+
+						<p:commandButton binding="#{alunoForm.cbNovo}"
+							actionListener="#{alunoForm.novo}">
+							<p:resetInput target="@form" />
+						</p:commandButton>
+
+						<p:commandButton id="cbEditar" title="botão"
+							binding="#{alunoForm.cbEditar}"
+							actionListener="#{alunoForm.editar}">
+							<p:resetInput target="@form" />
+						</p:commandButton>
+						<p:commandButton binding="#{alunoForm.cbExcluir}"
+							actionListener="#{alunoForm.excluir}">
+							<p:resetInput target="@form" />
+							<p:confirm header="Excluir"
+								message="#{alunoForm.msgPadraoCDialog}" icon="ui-icon-alert" />
+						</p:commandButton>
+						<p:commandButton binding="#{alunoForm.cbSalvarNovo}"
+							actionListener="#{alunoForm.salvarNovo}" />
+
+						<p:commandButton binding="#{alunoForm.cbSalvarEditar}"
+							actionListener="#{alunoForm.salvarEditar}" />
+						<p:commandButton binding="#{alunoForm.cbCancelar}"
+							actionListener="#{alunoForm.cancelar}">
+							<p:resetInput target="@form" />
+							<p:confirm header="Cancelar"
+								message="#{alunoForm.msgPadraoCDialog}" icon="ui-icon-alert" />
+						</p:commandButton>
+						<p:commandButton value="Pesquisar"
+							actionListener="#{alunoForm.pesquisar}"
+							oncomplete="PF('dialogPesq').show();" update="@form" />
+
+
+					</f:facet>
+				</p:toolbar>
+			</p:panel>
+
+			<div class="EmptyBox10" />
+			<p:panel>
+				<div class="campoForm DispInlBlock">
+					<h:outputLabel value="Nome do Aluno " />
+					<div class="EmptyBox5" />
+					<p:inputText disabled="#{alunoForm.ocioso}" size="40" id="nome"
+						value="#{alunoForm.entidade.nomAluno}">
+					</p:inputText>
+				</div>
+
+				<div class="campoForm DispInlBlock">
+					<p:outputLabel value="Data Nascimento" />
+					<div class="EmptyBox5" />
+					<p:inputMask disabled="#{alunoForm.ocioso}" mask="99/99/9999"
+						size="20" placeholder="Ex: 01/01/2000" />
+				</div>
+
+				<div class="campoForm DispInlBlock">
+					<p:outputLabel value="Local Do Nascimento" />
+					<div class="EmptyBox5" />
+					<p:inputText disabled="#{alunoForm.ocioso}" size="30"
+						id="localNasc" value=" " />
+				</div>
+				<div class="campoForm DispInlBlock">
+					<h3>Foto</h3>
+					<p:fileUpload id="upload" mode="advanced"
+						fileUploadListener="#{alunoForm.upload}" auto="true" update="foto" />
+					<p:graphicImage id="foto" value="#{imagemBean.caminho}">
+						<f:param name="caminho" value="#{alunoForm.entidade.caminho}" />
+					</p:graphicImage>
+				</div>
+
+				<div class="EmptyBox10" />
+				<div class="campoForm DispInlBlock">
+					<h:outputLabel value="Endereço " />
+					<div class="EmptyBox5" />
+					<p:inputText disabled="#{alunoForm.ocioso}" size="60" id="endereco"
+						value="#{alunoForm.entidade.nomMae}">
+					</p:inputText>
+				</div>
+				<div class="campoForm DispInlBlock">
+					<h:outputLabel value="Nº " />
+					<div class="EmptyBox5" />
+					<p:inputText disabled="#{alunoForm.ocioso}" size="10" id="numero"
+						value="#{alunoForm.entidade.nomMae}">
+					</p:inputText>
+				</div>
+				<div class="EmptyBox10" />
+				<div class="campoForm DispInlBlock">
+					<h:outputLabel value="Cep " />
+					<div class="EmptyBox5" />
+					<p:inputText disabled="#{alunoForm.ocioso}" size="10" id="cep"
+						value="#{alunoForm.entidade.nomMae}">
+					</p:inputText>
+				</div>
+				<div class="campoForm DispInlBlock">
+					<h:outputLabel value="Bairro" />
+					<div class="EmptyBox5" />
+					<p:inputText disabled="#{alunoForm.ocioso}" size="30" id="bairro"
+						value="#{alunoForm.entidade.nomMae}">
+					</p:inputText>
+				</div>
+
+				<div class="campoForm DispInlBlock">
+					<h:outputLabel value="Cidade " />
+					<div class="EmptyBox5" />
+					<p:inputText disabled="#{alunoForm.ocioso}" size="30" id="cidade"
+						value=" ">
+					</p:inputText>
+				</div>
+
+				<div class="campoForm DispInlBlock">
+					<h:outputLabel value="UF " />
+					<div class="EmptyBox5" />
+					<p:inputText disabled="#{alunoForm.ocioso}" size="10" id="uf"
+						value="#{alunoForm.entidade.nomMae}">
+					</p:inputText>
+				</div>
+				<p:separator />
+				<div class="campoForm DispInlBlock">
+					<h:outputLabel value="Nome da Mãe " />
+					<div class="EmptyBox5" />
+					<p:inputText size="30" id="nomeMae"
+						value="#{alunoForm.entidade.nomMae}">
+					</p:inputText>
+				</div>
+				<div class="campoForm DispInlBlock">
+					<p:outputLabel for="tMae" value="Trabalha ?" />
+					<div class="EmptyBox10" />
+					<p:selectOneRadio id="tMae" disabled="#{alunoForm.ocioso}">
+						<f:selectItem itemLabel="Sim" itemValue="S" />
+						<f:selectItem itemLabel="Não" itemValue="N" />
+					</p:selectOneRadio>
+				</div>
+				<div class="campoForm DispInlBlock">
+					<h:outputLabel value="Função " />
+					<div class="EmptyBox5" />
+					<p:inputText disabled="#{alunoForm.ocioso}" size="30"
+						id="funcaoMae" value="#{alunoForm.entidade.nomMae}">
+					</p:inputText>
+				</div>
+				<div class="campoForm DispInlBlock">
+					<h:outputLabel value="Renda " />
+					<div class="EmptyBox5" />
+					<p:inputText size="15" disabled="#{alunoForm.ocioso}" id="rendaMae"
+						value="#{alunoForm.entidade.nomMae}">
+					</p:inputText>
+				</div>
+				<p:separator />
+				<div class="campoForm DispInlBlock">
+					<h:outputLabel value="Nome do Pai " />
+					<div class="EmptyBox5" />
+					<p:inputText size="30" disabled="#{alunoForm.ocioso}" id="nomePai"
+						value="#{alunoForm.entidade.nomPai}">
+					</p:inputText>
+				</div>
+
+				<div class="campoForm DispInlBlock">
+					<p:outputLabel for="tpai" value="Trabalha ?" />
+					<p:selectOneRadio id="tpai" disabled="#{alunoForm.ocioso}">
+						<f:selectItem itemLabel="Sim" itemValue="S" />
+						<f:selectItem itemLabel="Não" itemValue="N" />
+					</p:selectOneRadio>
+				</div>
+				<div class="campoForm DispInlBlock">
+					<h:outputLabel value="Função " />
+					<div class="EmptyBox5" />
+					<p:inputText size="30" disabled="#{alunoForm.ocioso}"
+						id="funcaoPai" value="#{alunoForm.entidade.nomMae}">
+					</p:inputText>
+				</div>
+				<div class="campoForm DispInlBlock">
+					<h:outputLabel value="Renda " />
+					<div class="EmptyBox5" />
+					<p:inputText size="15" disabled="#{alunoForm.ocioso}" id="rendaPai"
+						value="#{alunoForm.entidade.nomMae}">
+					</p:inputText>
+				</div>
+
+				<div class="campoForm DispInlBlock">
+					<h:outputLabel value="Quantas pessoas moram na casa ? " />
+					<div class="EmptyBox5" />
+					<p:inputText size="15" disabled="#{alunoForm.ocioso}"
+						id="qtdMoraNaCasa" value=" ">
+					</p:inputText>
+				</div>
+				<div class="campoForm DispInlBlock">
+					<h:outputLabel value="Quantos Filhos ? " />
+					<div class="EmptyBox5" />
+					<p:inputText size="15" disabled="#{alunoForm.ocioso}"
+						id="qtdFilhos" value=" ">
+					</p:inputText>
+				</div>
+				<div class="campoForm DispInlBlock">
+					<h:outputLabel value="Quantos Filhos na APA " />
+					<div class="EmptyBox5" />
+					<p:inputText size="15" disabled="#{alunoForm.ocioso}"
+						id="qtdFilhosNaApa" value=" ">
+					</p:inputText>
+				</div>
+				<div class="campoForm DispInlBlock">
+					<p:outputLabel value="Telefone" />
+					<div class="EmptyBox5" />
+					<p:inputMask mask="(99)9999-9999" disabled="#{alunoForm.ocioso}"
+						placeholder="Ex: (21) 2616-0000 " size="20" />
+				</div>
+
+				<div class="campoForm DispInlBlock">
+					<p:outputLabel value="Celular" />
+					<div class="EmptyBox5" />
+					<p:inputMask mask="(99)9.9999-9999" disabled="#{alunoForm.ocioso}"
+						placeholder="Ex: (21) 9.8781-0000" size="20" />
+				</div>
+
+			</p:panel>
+
+
+			<p:dialog id="dialogPesq" modal="true" widgetVar="dialogPesq"
+				header="Alunos" showHeader="true" width="80%" onHide="true">
+
+				<p:dataTable id="dataTableAlunoPesq" var="alunoVar"
+					value="#{alunoForm.alunoList}" paginator="true" rows="7"
+					sortBy="#{alunoVar.id}" sortOrder="descending"
+					selection="#{alunoForm.entidadeDataTable}" selectionMode="single"
+					rowKey="#{alunoVar.id}">
+
+					<p:ajax event="rowDblselect" listener="#{alunoForm.selecionar}"
+						update="@form" />
+
+					<p:column sortBy="#{alunoVar.id}" filterBy="#{alunoVar.id}"
+						filterMatchMode="contains">
+						<f:facet name="header">
+							<h:outputText value="Código" style="font-size: 12px !important" />
+						</f:facet>
+						<h:outputText value="#{alunoVar.id}"
+							style="text-align: center; display:block;" />
+					</p:column>
+
+					<p:column sortBy="#{alunoVar.nomAluno}"
+						filterBy="#{alunoVar.nomAluno}" filterMatchMode="contains">
+						<f:facet name="header">
+							<h:outputText value="Nome" style="font-size: 12px !important" />
+						</f:facet>
+						<h:outputText value="#{alunoVar.nomAluno}"
+							style="text-align: center; display:block;" />
+					</p:column>
+
+					<p:column sortBy="#{alunoVar.nomMae}" filterBy="#{alunoVar.nomMae}"
+						filterMatchMode="contains">
+						<f:facet name="header">
+							<h:outputText value="Nome da Mãe"
+								style="font-size: 12px !important" />
+						</f:facet>
+						<h:outputText value="#{alunoVar.nomMae}"
+							style="text-align: center; display:block;" />
+					</p:column>
+				</p:dataTable>
+
+
+			</p:dialog>
+
+		</h:form>
+
+	</ui:define>
+</ui:composition>

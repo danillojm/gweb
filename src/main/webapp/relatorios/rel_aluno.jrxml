@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rel_aluno" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e2cd3ab9-f34f-40e8-b0ec-b45f3eb31db8">
+	<property name="ireport.zoom" value="2.143588810000018"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="PARAM_RELATORIO" class="java.lang.String"/>
+	<field name="nomAluno" class="java.lang.String"/>
+	<field name="id" class="java.lang.Long"/>
+	<field name="nomMae" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="138" splitType="Stretch">
+			<staticText>
+				<reportElement x="40" y="114" width="400" height="24" uuid="0c4c0b32-e601-4ada-aaa8-532d164c7dd5"/>
+				<textElement textAlignment="Center">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RELATORIO DE ALUNOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="129" y="19" width="222" height="20" uuid="966857ad-ab21-4dfb-99bb-f36b1ca0939c"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[AÇÂO PAROQUIAL DE ASSISTENCIA ]]></text>
+			</staticText>
+			<image>
+				<reportElement mode="Opaque" x="351" y="0" width="132" height="74" isRemoveLineWhenBlank="true" isPrintInFirstWholeBand="true" isPrintWhenDetailOverflows="true" forecolor="#FFFFFF" uuid="54a4a60b-9198-458f-b6aa-7acba9dab12f"/>
+				<imageExpression><![CDATA["C:\\Users\\Danillo\\Desktop\\logo-apa copiar.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="156" y="54" width="172" height="20" uuid="95cec6f6-785d-4b29-95c7-a9114aeb15d1"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[LAR DOM BOSCO - CARPINA]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="21" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="71" y="0" width="58" height="20" forecolor="#FFFFFF" backcolor="#333333" uuid="16bd0b9b-1c81-414a-8125-f073e02db439"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="129" y="0" width="156" height="20" forecolor="#FFFFFF" backcolor="#333333" uuid="c1f6efec-3b0b-47d0-bfa5-cc931dd9831e"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nome ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="285" y="0" width="139" height="20" forecolor="#FFFFFF" backcolor="#333333" uuid="b945a6cf-a0a7-4501-b8e4-642bbc286c80"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nome da mãe]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<rectangle>
+				<reportElement x="285" y="0" width="139" height="20" forecolor="#333333" uuid="f7979863-aaaa-4676-a739-196b8da910a8"/>
+			</rectangle>
+			<textField>
+				<reportElement x="285" y="0" width="139" height="20" uuid="99db5e54-40e2-4a15-bcb2-55b2ec5d5b10"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{nomMae}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="71" y="0" width="58" height="20" forecolor="#333333" uuid="26ccb738-95d5-4cb0-a861-059674ce031a"/>
+			</rectangle>
+			<textField>
+				<reportElement x="71" y="0" width="58" height="20" uuid="f4d22e96-cc18-42f1-bfa9-c770820eeeb0"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="129" y="0" width="156" height="20" forecolor="#333333" uuid="aac74d88-fae0-470e-bc56-de5f18632ec2"/>
+			</rectangle>
+			<textField>
+				<reportElement x="129" y="0" width="156" height="20" uuid="115109ef-02f0-44c9-bbf5-6e5edde2300c"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{nomAluno}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="20" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

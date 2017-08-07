@@ -1,0 +1,44 @@
+@CHARSET "UTF-8";
+
+
+.campoForm{
+padding: 5px;	
+}
+
+body {
+	font-size: 12px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: normal;
+	background-color: #FFFFFF;
+}
+
+header {
+	padding: 5px 0px;
+	background-color: #037bbc;
+	box-shadow: 0px 2-x 2px #ccc;
+	height: 70px;
+}
+
+.conteudo {
+	padding: 0px 8px;
+}
+
+/*Menu sistema*/
+.menu-sistema {
+	border: 0px !important;
+	padding: 0px !important;
+	background: none !important;
+}
+
+.menu-sistema .ui-menu-patent>a . ui-menuitem-text {
+	color: #ffffff !important;
+}
+
+footer {
+	font-size: 12px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: normal;
+	background-color: #FFFFFF;;
+}
+
+ 

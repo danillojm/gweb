@@ -1,0 +1,82 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml" xmlns:f="http://java.sun.com/jsf/core">
+
+
+	<ui:define name="corpo">
+		<p:growl id="growl" showDetail="true" life="5000" showSummary="false" severity="info, warn, error" autoUpdate="true" />
+
+
+		<h:form id="formAluno" binding="#{alunoForm.formPrincipal}" enctype="multipart/form-data">
+
+			<div class="EmptyBox10" />
+			<p:panel id="pnToolbar" styleClass="Container100 ShadowEffect DispInlBlock ui-panelgrid-blank ui-noborder">
+				<p:focus context="pnToolbar" />
+				<p:toolbar styleClass="ui-noborder">
+					<f:facet name="left">
+
+						<p:commandButton binding="#{alunoForm.cbNovo}" actionListener="#{alunoForm.novo}">
+							<p:resetInput target="@form" />
+						</p:commandButton>
+
+						<p:commandButton id="cbEditar" title="botão" binding="#{alunoForm.cbEditar}" actionListener="#{alunoForm.editar}">
+							<p:resetInput target="@form" />
+						</p:commandButton>
+						<p:commandButton binding="#{alunoForm.cbExcluir}" actionListener="#{alunoForm.excluir}">
+							<p:resetInput target="@form" />
+							<p:confirm header="Excluir" message="#{alunoForm.msgPadraoCDialog}" icon="ui-icon-alert" />
+						</p:commandButton>
+						<p:commandButton binding="#{alunoForm.cbSalvarNovo}" actionListener="#{alunoForm.salvarNovo}" />
+
+						<p:commandButton binding="#{alunoForm.cbSalvarEditar}" actionListener="#{alunoForm.salvarEditar}" />
+						<p:commandButton binding="#{alunoForm.cbCancelar}" actionListener="#{alunoForm.cancelar}">
+							<p:resetInput target="@form" />
+							<p:confirm header="Cancelar" message="#{alunoForm.msgPadraoCDialog}" icon="ui-icon-alert" />
+						</p:commandButton>
+						<p:commandButton value="Pesquisar" actionListener="#{alunoForm.pesquisar}" oncomplete="PF('dialogPesq').show();" update="@form" />
+
+
+					</f:facet>
+				</p:toolbar>
+			</p:panel>
+			<p:separator />
+			
+			<p:panel>
+			
+			<div class="campoForm DispInlBlock">
+					<h:outputLabel value="Nome do aluno" />
+					<div class="EmptyBox5" />
+                    <p:selectOneMenu  var="alunoVar"  value="#{alunoDataSource.aluno}"  filter="true">
+                    <f:selectItem itemLabel="Selecione um aluno" itemValue="" noSelectionOption="true" />
+                       <f:selectItems  value="#{alunoDataSource.alunoList}"/>
+                       
+                       <p:column >
+                       <h:outputText value="#{alunoVar.id}" />
+                       </p:column>
+                        
+                       <p:column >
+                       
+                       <h:outputText value="#{alunoVar.nomAluno}" />
+                       </p:column>
+                       
+                    </p:selectOneMenu>
+				</div>
+				 
+			
+			<div class="campoForm DispInlBlock">
+					<h:outputLabel value="Nome do aluno" />
+					<div class="EmptyBox5" />
+					<p:inputText size="30" id="nomeMae" value="#{alunoForm.entidade.nomMae}">
+					</p:inputText>
+				</div>
+			
+			
+			</p:panel>
+			
+			
+			
+		</h:form>
+		
+		
+		</ui:define>
+		
+		</ui:composition>
+			

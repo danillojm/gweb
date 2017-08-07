@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Login</title>
+</h:head>
+<h:body style="background:  #23A4DB ">
+asdasd
+	<p:growl id="mensagem" />
+
+	<p:dialog header="Autenticação" closable="false" draggable="false" modal="true" resizable="false" visible="true">
+		<h:form>
+			<h:panelGrid>
+				<p:outputLabel for="nome" value="NOME:" />
+				<p:inputText id="nome" required="true" requiredMessage="O campo nome é obrigatorio" value="#{autenticarLogin.usuario.nome}" />
+
+				<p:outputLabel for="senha" value="SENHA:" />
+				<p:password id="senha" maxlength="8" required="true" requiredMessage="Por favor digite uma senha" value="#{autenticarLogin.usuario.senha}" />
+			</h:panelGrid>
+
+			<h:panelGrid>
+				<p:commandButton value="Entrar" update="mensagem"  actionListener="#{autenticarLogin.login}"/>
+			</h:panelGrid>
+		</h:form>
+	</p:dialog>
+
+
+</h:body>
+</html>
